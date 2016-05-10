@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8">
+    <title>SwipeCardView -  卡牌效果操作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.png" type=" image/png" >
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">SwipeCardView</h1>
+      <h2 class="project-tagline">支持左右滑动操作的卡牌效果<br />实现类似 Tinder、花田、明星空间等应用的喜欢、不喜欢 以及 关注功能</h2>
+      <a href="https://github.com/Vultur/CircleFillableLoader" class="btn">开源贡献</a>
+      <a href="https://github.com/Vultur/CircleFillableLoader/archive/master.zip" class="btn">免费下载</a>
+      <a href="http://osslab.online/" class="btn">更多项目</a>
+    </section>
+
+    <section class="main-content">
+
+<p>
+<a href="#"><img src="https://img.shields.io/badge/Android%20Arsenal-SwipeCardView-lightgrey.svg?style=flat" alt="SwipeCardView" /></a>
+<a href="http://developer.android.com/index.html" target="_blank"><img src="https://img.shields.io/badge/platform-android-green.svg" alt="SwipeCardView" /></a>
+<a href="https://android-arsenal.com/api?level=14" target="_blank"><img src="https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat" alt="SwipeCardView" /></a>
+<a href="http://osslab.online/" target="_blank"><img src="https://img.shields.io/badge/OSSLab-开源软件实验室-blue.svg?style=flat" alt="开源软件实验室" /></a>
+</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用方法</h1>
+
+<p>首先，你需要导入模块项目或者添加依赖类库：</p>
+
+<div class="highlight highlight-source-groovy-gradle"><pre><span class="pl-en">dependencies</span> {
+    compile <span class="pl-s"><span class="pl-pds">'</span> online.osslab:SwipeCard:1.0.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h2>
+<a id="adapter" class="anchor" href="#adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>核心用法：AdapterView</h2>
+
+<div class="highlight highlight-text-xml">
+  <pre class="site-footer-credits">
+<span class="pl-ent">swipeCardView</span> = (<span class="pl-ent">SwipeCardView</span>)<span class="pl-mq">findViewById</span>(<span class="pl-pds">R</span>.<span class="pl-pds">id</span>.<span class="pl-id">swipeCardView</span>);
+<samp class="site-footer-credits">// swipeCardView.setIsNeedSwipe(true); // 是否开启swipe滑动效果，当不调用此方法设置时，默认开启；</samp>
+<span class="pl-e">swipeCardView</span>.<span class="pl-pds">setSwipeListener</span>(<span class="pl-id">this</span>);
+<span class="pl-e">swipeCardView</span>.<span class="pl-pds">setOnItemClickListener</span>(<span class="pl-id">this</span>);
+</pre></div>
+
+
+<h2>
+<a id="xml" class="anchor" href="#xml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>样式文件：XML</h2>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">online.osslab.SwipeCardView</span>
+    <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">swipe</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/swipeCardView<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">swipe</span><span class="pl-e">:</span><span class="pl-e">min_adapter_stack</span>=<span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>
+    <span class="pl-e">swipe</span><span class="pl-e">:</span><span class="pl-e">max_visible</span>=<span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>
+    <span class="pl-e">swipe</span><span class="pl-e">:</span><span class="pl-e">vertical_offset</span>=<span class="pl-s"><span class="pl-pds">"</span>28dp<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+
+
+<h2>
+<a id="java" class="anchor" href="#java" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>回调方法</h2>
+
+<ul>
+<li><span class="pl-mh">onSwipeListener</span></li>
+</ul>
+
+<div class="highlight highlight-text-xml">
+  <pre class="site-footer-credits">
+
+    @Override
+    <span class="pl-id">public</span> <span class="pl-id">void</span> <span class="pl-ml">removeFirstObjectInAdapter</span> (){
+	<span class="pl-ms">adapter</span>.<span class="pl-pds">remove</span>(<span class="pl-mq">0</span>);
+    }
+    
+    @Override
+    <span class="pl-id">public</span> <span class="pl-id">void</span> <span class="pl-ml">onLeftCardExit</span>(<span class="pl-pds">Object</span> <span class="pl-e">dataObject</span>){
+	<samp class="site-footer-credits">// 向左滑动</samp>
+    }
+    
+    @Override
+    <span class="pl-id">public</span> <span class="pl-id">void</span> <span class="pl-ml">onRightCardExit</span>(<span class="pl-pds">Object</span> <span class="pl-e">dataObject</span>){
+	<samp class="site-footer-credits">// 向右滑动</samp>
+    }
+    
+    @Override
+    <span class="pl-id">public</span> <span class="pl-id">void</span> <span class="pl-ml">onAdapterAboutToEmpty</span>(<span class="pl-mq">int</span> <span class="pl-ml">itemsInAdapter</span>){
+	<span class="pl-v">if</span> (<span class="pl-ml">itemsInAdapter</span> == <span class="pl-mq">3</span>){
+	        <span class="pl-pds">loadData</span>();
+	    }
+    }
+</pre></div>
+
+<ul>
+<li><span class="pl-mh">OnItemClickListener</span></li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre class="site-footer-credits">@Override
+<span class="pl-id">public</span> <span class="pl-id">void</span> <span class="pl-e">onItemClicked</span>(<span class="pl-mh">MotionEvent</span> <span class="pl-en">event</span>, <span class="pl-mb">View</span> <span class="pl-en">view</span>, <span class="pl-mb">Object</span> <span class="pl-en">dataObject</span>){
+	<span class="pl-k">if</span>(<span class="pl-pds">view</span>.<span class="pl-en">getTag</span>() <span class="pl-id">instanceof</span> <span class="pl-ent">ViewHolder</span>){
+		<span class="pl-e">int</span> <span class="pl-mo">x</span> = (<span class="pl-pds">int</span>) <span class="pl-mo"><span class="pl-k">int</span></span>.<span class="pl-e">getRawX</span>();
+		<span class="pl-e">int</span> <span class="pl-mo">y</span> = (<span class="pl-pds">int</span>) <span class="pl-mo"><span class="pl-k">int</span></span>.<span class="pl-e">getRawY</span>();
+
+		<span class="pl-e">ViewHolder</span> <span class="pl-pds">vh</span> = (<span class="pl-ent">ViewHolder</span>) <span class="pl-pds">view</span>.<span class="pl-mq">getTag</span>();
+		<span class="pl-e">View</span> <span class="pl-pds">child</span> = <span class="pl-mo">vh</span>.<span class="pl-en">portraitView</span>;
+		<span class="pl-e">Rect</span> <span class="pl-pds">outRect</span> = <span class="pl-mo">new</span> <span class="pl-ent">Rect</span>();
+		<span class="pl-e">child</span>.<span class="pl-pds">getGlobalVisibleRect</span>(<span class="pl-mo">outRect</span>);
+        
+        <span class="pl-e">if</span> (<span class="pl-pds">outRect</span>.<span class="pl-mo">contains</span>(<span class="pl-mo">x</span>, <span class="pl-mo">y</span>)){
+        	<samp class="site-footer-credits">// 查看详情</samp>
+        } <span class="pl-e">else</span> {
+	    <span class="pl-pds">outRect</span>.<span class="pl-mo">setEmpty</span>();
+            <span class="pl-e">child</span> = <span class="pl-pds">vh</span>.<span class="pl-mo">collectView</span>;
+            <span class="pl-e">child</span>.<span class="pl-pds">getGlobalVisibleRect</span>(<span class="pl-mo">outRect</span>);
+            <span class="pl-e">if</span> (<span class="pl-pds">outRect</span>.<span class="pl-mo">contains</span>(<span class="pl-mo">x</span>, <span class="pl-mo">y</span>)){
+            	<samp class="site-footer-credits">// 关注明星</samp>
+            }
+        }
+    }
+}
+
+</pre></div>
+
+
+
+
+<h1>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>演示示例</h1>
+
+<p><a href="http://#">360应用市场</a>
+ - <a href="http://#">小米应用商店</a>
+ - <a href="http://#">豌豆荚</a>
+ - <a href="http://#e">应用宝</a>
+ - <a href="http://#">安卓市场</a>
+</p>
+<p><img src="./preview.gif" alt="SwipeCardView" /></p>
+
+<h1>
+<a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>联系作者</h1>
+
+<ul>
+<li><a href="mailto:wall-e@live.cn">wall-e@live.cn</a></li>
+<li><a href="http://osslab.online/">开源软件实验室</a></li>
+</ul>
+
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>开发许可</h1>
+
+<pre><code>Copyright 2016 Lopez Mikhae
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner">使用 <a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">Apache 2.0</a> 许可协议</span>
+
+        <span class="site-footer-credits">由 <a href="http://osslab.online/">开源软件实验室</a> 提供技术支持</span>
+      </footer>
+
+    </section>
+    
+    <!-- 统计代码 -->
+
+  </body>
+</html>
