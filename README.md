@@ -81,7 +81,7 @@ swipeCardView.setOnItemClickListener(this);
         if (view.getTag() instanceof ViewHolder) {
             int x = (int) event.getRawX();
             int y = (int) event.getRawY();
-            ViewHolder vh = (ViewHolder) v.getTag();
+            ViewHolder vh = (ViewHolder) view.getTag();
             View child = vh.portraitView;
             Rect outRect = new Rect();
             child.getGlobalVisibleRect(outRect);
