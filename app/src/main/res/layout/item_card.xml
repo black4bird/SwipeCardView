@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="18dp"
+    android:background="@drawable/card_background">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:contentDescription="@null"
+        android:id="@+id/portrait"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="1px"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@mipmap/default_card"
+        fresco:placeholderImageScaleType="centerCrop"
+        fresco:roundTopLeft="true"
+        fresco:roundTopRight="true"
+        fresco:roundBottomLeft="false"
+        fresco:roundBottomRight="false"
+        fresco:roundedCornerRadius="14px"/>
+
+    <CheckedTextView
+        android:id="@+id/collect"
+        android:layout_gravity="right"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="-22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/card_icon_collect"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:text=""/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#565656"
+            android:textSize="16sp"
+            android:text=""/>
+
+        <LinearLayout
+            android:layout_below="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="12dp">
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#565656"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/sign"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#565656"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/height"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#565656"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#565656"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:text=""/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
